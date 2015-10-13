@@ -10,6 +10,12 @@
 * [ManyToMany Annotation](#manytomany)
 * [ManyToOne Annotation](#manytoone)
 * [OneToMany Annotation](#onetomany)
+* [OneToOne Annotation](#onetomany)
+* [Constraints Validation (Assertion)](#constraints)
+ * [Constraint NotBlank](#notblank)
+ * [Constraint NotNull](#notnull)
+ * [Constraint Type(integer)](#typeinteger)
+
 
 ## <a name="json_response"></a>Json Response 
 Créer une réponse Json.
@@ -125,7 +131,7 @@ Raccourcis : **manytoone**
 
 ```
 /**
-* @Orm\ManyToOne(targetEntity="${Entity}", inversedBy="${current}")
+* @ORM\ManyToOne(targetEntity="${Entity}", inversedBy="${current}")
 */
 ```
 
@@ -138,6 +144,53 @@ Raccourcis : **onetomany**
 
 ```
 /**
-* @Orm\OneToMany(targetEntity="${Entity}", mappedBy="${current}")
+* @ORM\OneToMany(targetEntity="${Entity}", mappedBy="${current}")
+*/
+```
+
+## <a name="onetoone"></a>OneToOne Doctrine annotation
+Annotation pour créer une relation *one to one*
+
+Raccourcis : **onetoone**
+
+(*notation netbeans*)
+```
+/**
+* @ORM\OneToOne(targetEntity="${Entity}")
+**/
+```
+
+## <a name="constraints"></a>Constraints Validation (Assertion)
+Constraints validation using Symfony Validator
+
+Raccourcis : **assert**
+
+```
+use Symfony\Component\Validator\Constraints as Assert;
+```
+
+### <a name="notblank"></a>Contraint: NotBlank
+Raccourcis : **notblank**
+```
+/**
+* @Assert\NotBlank()
+*/
+```
+### <a name="notnull"></a>Contraint: NotNull
+Raccourcis : **notnull**
+```
+/**
+* @Assert\NotNull()
+*/
+```
+
+### <a name="typeinteger"></a>Contraint: Type (integer)
+Raccourcis : **typeinteger**
+```
+/**
+* @Assert\Type(
+*     type="${integer}",
+*     message="The value {{ value }} is not a valid {{ type }}."
+* )
 */
 ```
